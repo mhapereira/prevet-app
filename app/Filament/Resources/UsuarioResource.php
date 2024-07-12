@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioResource extends Resource
 {
@@ -43,7 +44,10 @@ class UsuarioResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('password')
                     ->label('Senha')
-                    ->required(),
+                    ->password()
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (string $context): bool => $context === 'create')
             ]);
     }
 
