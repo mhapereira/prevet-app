@@ -14,10 +14,7 @@ class Usuario extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return $this->hasVerifiedEmail();
-    }
+
 
     // Especifica o nome da tabela personalizada
     protected $table = 'usuario';
@@ -55,6 +52,11 @@ class Usuario extends Authenticatable implements FilamentUser
     public static function getUsuarioSelectOptions()
     {
         return static::orderBy('name')->pluck('name', 'IDUsuario')->toArray();
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 
 }
