@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Exception;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RegistroAmostra extends Model
 {
@@ -130,9 +132,9 @@ class RegistroAmostra extends Model
     //     return $this->belongsToMany(AnaliseMicrobiologica::class);
     // }
 
-    public function amostra(): BelongsTo
+    public function amostra(): HasMany
     {
-        return $this->belongsTo(AnaliseMicrobiologica::class, 'IDMaterial', 'IDMaterial');
+        return $this->hasMany(AnaliseMicrobiologica::class, 'IDMaterial', 'IDMaterial');
     }
 
     // Método para obter todos registros

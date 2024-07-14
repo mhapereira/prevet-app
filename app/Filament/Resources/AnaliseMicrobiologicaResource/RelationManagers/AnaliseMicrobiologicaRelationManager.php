@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\AnaliseMicrobiologicaResource\RelationManagers;
 
+use App\Models\CrescimentoPlaca;
 use App\Models\Fragmento;
 use App\Models\MeioDeCultura;
+use App\Models\Morfologia;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Form;
@@ -22,16 +24,35 @@ class AnaliseMicrobiologicaRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('peixe')
+                Forms\Components\TextInput::make('IDPeixe')
+                ->formatStateUsing(function (string $state): string {
+                    if ($state == 1) 
+                    {
+                        return $state;
+                    } else
+                    {
+                        return substr($state, 5, 1);
+                    }
+
+                })
                     ->label('N Peixe')
                     ->default(1)
                     ->required(),
                 Forms\Components\Select::make('IDFraguimentos')
+                    ->relationship('fragmento', 'Descricao')
                     ->label('Fragmento')
                     ->options(Fragmento::getFragmentoSelectOptions()),
                 Forms\Components\Select::make('IDMeioCultura')
+                    ->relationship('meiocultura', 'Descricao')
                     ->label('Meio de cultura')
                     ->options(MeioDeCultura::getMeioDeCulturaSelectOptions()),
+                Forms\Components\Select::make('resultado')
+                    ->label('Crescimento em Placa')
+                    ->options(CrescimentoPlaca::getCrescimentoPlacaSelectOptions()),
+                Forms\Components\Select::make('morfologia')
+                    ->label('Morfologia')
+                    ->options(Morfologia::getMorfologiaSelectOptions()),
+                
             ]);
     }
 
@@ -44,12 +65,24 @@ class AnaliseMicrobiologicaRelationManager extends RelationManager
                     ->label('ID')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('amostra.lote')
+                    ->label('LOTE')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('fragmento.Descricao')
                     ->label('Fragmento')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('meiocultura.Descricao')
                     ->label('Meio de cultura')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('resultado')
+                    ->label('Crescimento')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('morfologia')
+                    ->label('Morfologia')
                     ->sortable()
                     ->searchable(),
             ])
