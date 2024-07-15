@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AnaliseMicrobiologicaResource\Pages;
 use App\Filament\Resources\AnaliseMicrobiologicaResource\RelationManagers;
 use App\Filament\Resources\AnaliseMicrobiologicaResource\RelationManagers\AnaliseMicrobiologicaRelationManager;
+use App\Filament\Resources\AntibiogramaResource\RelationManagers\AntibiogramaRelationManager;
 use App\Models\AnaliseMicrobiologica;
 use App\Models\RegistroAmostra;
 use Filament\Forms;
@@ -20,9 +21,9 @@ class AnaliseMicrobiologicaResource extends Resource
 {
     protected static ?string $model = RegistroAmostra::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cloud-arrow-up';
     protected static ?string $navigationGroup = 'Microbiológico';
-    protected static ?string $label = 'Analise microbiologica';
+    protected static ?string $label = 'Resultados';
 
     public static function form(Form $form): Form
     {
@@ -71,7 +72,8 @@ class AnaliseMicrobiologicaResource extends Resource
     public static function getRelations(): array
     {
         return [
-            AnaliseMicrobiologicaRelationManager::class
+            AnaliseMicrobiologicaRelationManager::class,
+            // AntibiogramaRelationManager::class
         ];
     }
 

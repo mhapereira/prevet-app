@@ -2,33 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CrescimentoPlacaResource\Pages;
-use App\Filament\Resources\CrescimentoPlacaResource\RelationManagers;
-use App\Models\CrescimentoPlaca;
+use App\Filament\Resources\AntibiogramaResource\Pages;
+use App\Filament\Resources\AntibiogramaResource\RelationManagers;
+use App\Models\Antibiograma;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CrescimentoPlacaResource extends Resource
+class AntibiogramaResource extends Resource
 {
-    protected static ?string $model = CrescimentoPlaca::class;
+    protected static ?string $model = Antibiograma::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Configuração';
-    protected static ?string $label = 'Crescimento de placas';
+    protected static ?string $navigationGroup = 'Microbiológico';
+    protected static ?string $label = 'Resultado Micro';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Crescimento')
-                    ->required(),
+                //
             ]);
     }
 
@@ -36,14 +33,7 @@ class CrescimentoPlacaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('name')
-                    ->label('Crescimento')
-                    ->sortable()
-                    ->searchable(),
+                //
             ])
             ->filters([
                 //
@@ -68,9 +58,9 @@ class CrescimentoPlacaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCrescimentoPlacas::route('/'),
-            'create' => Pages\CreateCrescimentoPlaca::route('/create'),
-            'edit' => Pages\EditCrescimentoPlaca::route('/{record}/edit'),
+            'index' => Pages\ListAntibiogramas::route('/'),
+            'create' => Pages\CreateAntibiograma::route('/create'),
+            'edit' => Pages\EditAntibiograma::route('/{record}/edit'),
         ];
     }
 }

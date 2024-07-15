@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CrescimentoPlacaResource\Pages;
-use App\Filament\Resources\CrescimentoPlacaResource\RelationManagers;
-use App\Models\CrescimentoPlaca;
+use App\Filament\Resources\BacteriaResource\Pages;
+use App\Filament\Resources\BacteriaResource\RelationManagers;
+use App\Models\Bacteria;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,20 +14,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CrescimentoPlacaResource extends Resource
+class BacteriaResource extends Resource
 {
-    protected static ?string $model = CrescimentoPlaca::class;
+    protected static ?string $model = Bacteria::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-bug-ant';
     protected static ?string $navigationGroup = 'Configuração';
-    protected static ?string $label = 'Crescimento de placas';
+    protected static ?string $label = 'Bactéria';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label('Crescimento')
+                    ->label('Bactéria')
                     ->required(),
             ]);
     }
@@ -41,7 +41,7 @@ class CrescimentoPlacaResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
-                    ->label('Crescimento')
+                    ->label('Bactéria')
                     ->sortable()
                     ->searchable(),
             ])
@@ -68,9 +68,9 @@ class CrescimentoPlacaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCrescimentoPlacas::route('/'),
-            'create' => Pages\CreateCrescimentoPlaca::route('/create'),
-            'edit' => Pages\EditCrescimentoPlaca::route('/{record}/edit'),
+            'index' => Pages\ListBacterias::route('/'),
+            'create' => Pages\CreateBacteria::route('/create'),
+            'edit' => Pages\EditBacteria::route('/{record}/edit'),
         ];
     }
 }

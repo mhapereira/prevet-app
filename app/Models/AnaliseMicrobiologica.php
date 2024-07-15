@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AnaliseMicrobiologica extends Model
 {
@@ -57,9 +58,14 @@ class AnaliseMicrobiologica extends Model
         return $this->belongsTo(MeioDeCultura::class, 'IDMeioCultura', 'IDMeioCultura');
     }
 
-    public function amostra(): BelongsTo
+    public function amostras(): BelongsTo
     {
         return $this->belongsTo(RegistroAmostra::class, 'IDMaterial', 'IDMaterial');
+    }
+
+    public function antibiograma(): HasMany
+    {
+        return $this->hasMany(Antibiograma::class, 'Amostra', 'IDPeixe');
     }
 
     protected static function booted(): void

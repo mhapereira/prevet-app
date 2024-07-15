@@ -127,12 +127,7 @@ class RegistroAmostra extends Model
         return $this->belongsTo(Piscicultura::class, 'IDPsicultura', 'IDPsicultura');
     }
 
-    // public function amostra()
-    // {
-    //     return $this->belongsToMany(AnaliseMicrobiologica::class);
-    // }
-
-    public function amostra(): HasMany
+    public function amostras(): HasMany
     {
         return $this->hasMany(AnaliseMicrobiologica::class, 'IDMaterial', 'IDMaterial');
     }
