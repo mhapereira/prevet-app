@@ -8,4 +8,13 @@ export default defineConfig({
             refresh: 'app/Livewire/**',
         }),
     ],
+    server: {
+        host: 'localhost', // Certifique-se de que está configurado para localhost
+        port: 3000,
+        hmr: {
+          host: 'localhost', // Certifique-se de que está configurado para localhost
+          protocol: 'ws', // ou 'wss' se estiver usando HTTPS
+        },
+        https: false, // Desative o SSL temporariamente
+      },
 });
