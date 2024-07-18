@@ -61,6 +61,8 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Molecular'),
                 NavigationGroup::make()
+                    ->label('Água'),
+                NavigationGroup::make()
                     ->label('Configuração')
                     ->collapsed(),
             ]);
