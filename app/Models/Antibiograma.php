@@ -31,6 +31,11 @@ class Antibiograma extends Model
         return $this->belongsTo(AnaliseMicrobiologica::class, 'Amostra', 'IDPeixe');
     }
 
+    public function antibiotico()
+    {
+        return $this->belongsTo(Antibiotico::class, 'IDAntibioticos', 'IDAntibioticos');
+    }
+
     // protected static function booted(): void
     // {
 

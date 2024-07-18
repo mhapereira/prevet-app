@@ -14,8 +14,6 @@ class Usuario extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
-
-
     // Especifica o nome da tabela personalizada
     protected $table = 'usuario';
 
@@ -57,6 +55,11 @@ class Usuario extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \Statamic\Notifications\PasswordReset($token));
     }
 
 }

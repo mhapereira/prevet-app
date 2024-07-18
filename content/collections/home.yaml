@@ -1,0 +1,14 @@
+title: Home
+template: home/show
+layout: layout
+revisions: false
+route: /
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

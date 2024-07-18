@@ -24,6 +24,7 @@ class AnaliseMicrobiologicaResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-cloud-arrow-up';
     protected static ?string $navigationGroup = 'Microbiológico';
     protected static ?string $label = 'Resultados';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,6 +27,7 @@ class RegistroAmostraResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-hashtag';
     protected static ?string $navigationGroup = 'Microbiológico';
     protected static ?string $label = 'Registro de amostra';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -131,6 +133,9 @@ class RegistroAmostraResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('Download')
+                    ->url(fn (RegistroAmostra $registro) => route('microbiologico.pdf.download', $registro))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

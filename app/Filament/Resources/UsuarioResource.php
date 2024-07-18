@@ -23,7 +23,8 @@ class UsuarioResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'Configuração';
     protected static ?string $label = 'Usuários';
-
+    protected static ?int $sort = 1000; 
+    
     public static function form(Form $form): Form
     {
         return $form

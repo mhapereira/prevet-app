@@ -37,7 +37,7 @@ class Piscicultura extends Model
 
     public function cidade()
     {
-        // return $this->belongsTo(Cidade::class, 'Cidade_ID', 'id');
+        return $this->belongsTo(Cidade::class, 'Cidade_ID', 'ID');
     }
 
     public function usuario()
