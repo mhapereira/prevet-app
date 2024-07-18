@@ -26,7 +26,7 @@ class RegistroAmostraResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-hashtag';
     protected static ?string $navigationGroup = 'Microbiológico';
-    protected static ?string $label = 'Registro de amostra';
+    protected static ?string $label = 'Microbiológico';
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
